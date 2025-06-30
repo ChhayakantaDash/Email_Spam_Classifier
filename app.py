@@ -5,6 +5,7 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 
+
 # --- NLTK Data Download (Corrected for modern NLTK versions) ---
 # This block now uses LookupError, which is compatible with recent NLTK versions.
 try:
@@ -23,8 +24,7 @@ ps = PorterStemmer()
 
 # --- Preprocessing Function ---
 def transform_text(text):
-    """Performs text preprocessing: lowercasing, tokenization, removing special characters,
-    removing stop words and punctuation, and stemming."""
+    
     text = text.lower()
     tokens = nltk.word_tokenize(text)
     

@@ -5,17 +5,16 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 
-# --- NLTK Data Download ---
-# This is the crucial part for deployment. It checks for the necessary NLTK
-# data and downloads it if it's missing.
+# --- NLTK Data Download (Corrected for modern NLTK versions) ---
+# This block now uses LookupError, which is compatible with recent NLTK versions.
 try:
     nltk.data.find('tokenizers/punkt')
-except nltk.downloader.DownloadError:
+except LookupError: 
     nltk.download('punkt')
 
 try:
     nltk.data.find('corpora/stopwords')
-except nltk.downloader.DownloadError:
+except LookupError:  # MODIFICATION: Changed from nltk.downloader.DownloadError
     nltk.download('stopwords')
 
 
@@ -36,7 +35,7 @@ def transform_text(text):
     
     return " ".join(stemmed_tokens)
 
-# --- Model and Vectorizer Loading (with caching for performance) ---
+# --- Model and Vectorizer Loading (with caching) ---
 @st.cache_resource
 def load_vectorizer():
     with open('vectorizer.pkl', 'rb') as f:

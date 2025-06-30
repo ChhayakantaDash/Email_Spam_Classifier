@@ -7,17 +7,7 @@ from nltk.stem.porter import PorterStemmer
 
 
 # --- NLTK Data Download (Corrected for modern NLTK versions) ---
-# This block now uses LookupError, which is compatible with recent NLTK versions.
-try:
-    nltk.data.find('tokenizers/punkt')
-except LookupError: 
-    nltk.download('punkt')
-
-try:
-    nltk.data.find('corpora/stopwords')
-except LookupError:  # MODIFICATION: Changed from nltk.downloader.DownloadError
-    nltk.download('stopwords')
-
+nltk.data.path.append('./nltk_data')
 
 # Initialize the Porter Stemmer
 ps = PorterStemmer()

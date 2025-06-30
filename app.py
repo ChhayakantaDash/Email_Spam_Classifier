@@ -2,12 +2,13 @@ import streamlit as st
 import pickle
 import string
 import nltk
+
+# Explicitly tell NLTK where to find the data folder
+nltk.data.path.append('./nltk_data')
+
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 
-
-# --- NLTK Data Download (Corrected for modern NLTK versions) ---
-nltk.data.path.append('./nltk_data')
 
 # Initialize the Porter Stemmer
 ps = PorterStemmer()
